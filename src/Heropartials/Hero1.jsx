@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
   return (
     <section className="bg-gray-900 min-h-screen sm:p-16 p-6 flex items-center justify-center  text-white">
         
-      <div className=" w-full  grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className=" max-w-8xl mx-auto  grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
         {/* Left Text Section */}
         <div>

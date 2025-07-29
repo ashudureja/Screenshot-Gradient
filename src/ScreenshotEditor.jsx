@@ -50,15 +50,23 @@ const ScreenshotEditor = () => {
   };
 
   const gradientPresets = [
-    { name: 'Purple Blue', color1: '#667eea', color2: '#764ba2' },
-    { name: 'Pink Orange', color1: '#f093fb', color2: '#f5576c' },
-    { name: 'Blue Green', color1: '#4facfe', color2: '#00f2fe' },
-    { name: 'Sunset', color1: '#ff7e5f', color2: '#feb47b' },
-    { name: 'Ocean', color1: '#2193b0', color2: '#6dd5ed' },
-    { name: 'Forest', color1: '#11998e', color2: '#38ef7d' },
-    { name: 'Cosmic', color1: '#9b59b6', color2: '#3498db' },
-    { name: 'Fire', color1: '#fc4a1a', color2: '#f7b733' },
-  ];
+  
+  { name: 'Cyber Pink', color1: '#ff0080', color2: '#ff8c00' },
+  
+  { name: 'Hot Magenta', color1: '#ff006e', color2: '#8338ec' },
+  
+ 
+  { name: 'Laser Red', color1: '#ff073a', color2: '#ff6b35' },
+  { name: 'Neon Yellow', color1: '#ffff00', color2: '#ff9500' },
+  { name: 'Plasma Blue', color1: '#0066ff', color2: '#00ffff' },
+  { name: 'Toxic Green', color1: '#7fff00', color2: '#32cd32' },
+  
+  
+  { name: 'Neon Orange', color1: '#ff4500', color2: '#ffd700' },
+ 
+   { name: 'Forest', color1: '#11998e', color2: '#38ef7d' }
+  
+];
 
   const handleMediaUpload = (event) => {
     const file = event.target.files[0];
@@ -640,14 +648,14 @@ const ScreenshotEditor = () => {
             }}
           >
             {!mediaUrl ? (
-              <div className="flex items-center justify-center h-full text-gray-400">
-                <div className="text-center p-4">
-                  <Upload size={window.innerWidth >= 640 ? 48 : 32} className="mx-auto mb-4 opacity-50" />
-                  <p className="text-sm sm:text-lg mb-2">Upload an image</p>
+              <div className="flex items-center justify-center h-full text-gray-200">
+                <div  onClick={() => fileInputRef.current?.click()}  className="text-center p-4 cursor-pointer ">
+                  <Upload  size={window.innerWidth >= 640 ? 48 : 32} className="mx-auto mb-4 opacity-50" />
+                  <p className="text-sm sm:text-lg ">Upload an image</p>
                   <p className="text-xs sm:text-sm">to get started</p>
-                  <p className="text-xs mt-2 text-gray-500">
+                  {/* <p className="text-xs mt-2 text-gray-400">
                     {currentDimensions.width} × {currentDimensions.height}
-                  </p>
+                  </p> */}
                 </div>
               </div>
             ) : (
