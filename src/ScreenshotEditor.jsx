@@ -145,27 +145,44 @@ const ScreenshotEditor = () => {
     const ctx = canvas.getContext('2d');
 
     // Draw gradient background
-    let gradient;
-    if (settings.gradientType === 'radial') {
-      gradient = ctx.createRadialGradient(
-        width / 2, height / 2, 0,
-        width / 2, height / 2, Math.max(width, height) / 1.2
-      );
-      gradient.addColorStop(0, settings.color1);
-      gradient.addColorStop(0.5, settings.color2);
-      if (settings.useThreeColors) gradient.addColorStop(1, settings.color3);
-      else gradient.addColorStop(1, settings.color2);
-    } else {
-      // Linear
-      const angle = (settings.gradientDirection - 90) * Math.PI / 180;
-      const x = Math.cos(angle) * width / 2 + width / 2;
-      const y = Math.sin(angle) * height / 2 + height / 2;
-      gradient = ctx.createLinearGradient(width / 2, height / 2, x, y);
-      gradient.addColorStop(0, settings.color1);
-      gradient.addColorStop(0.5, settings.color2);
-      if (settings.useThreeColors) gradient.addColorStop(1, settings.color3);
-      else gradient.addColorStop(1, settings.color2);
-    }
+  
+// Fixed gradient creation logic for canvas download
+let gradient;
+if (settings.gradientType === 'radial') {
+  gradient = ctx.createRadialGradient(
+    width / 2, height / 2, 0,
+    width / 2, height / 2, Math.max(width, height) / 2
+  );
+  if (settings.useThreeColors) {
+    gradient.addColorStop(0, settings.color1);
+    gradient.addColorStop(0.5, settings.color2);
+    gradient.addColorStop(1, settings.color3);
+  } else {
+    gradient.addColorStop(0, settings.color1);
+    gradient.addColorStop(1, settings.color2);
+  }
+} else {
+  // Linear gradient - convert CSS angle to canvas coordinates
+  const angleRad = (settings.gradientDirection) * Math.PI / 180;
+  const diagonal = Math.sqrt(width * width + height * height);
+  const halfDiagonal = diagonal / 2;
+  
+  const x1 = width / 2 - Math.cos(angleRad) * halfDiagonal;
+  const y1 = height / 2 - Math.sin(angleRad) * halfDiagonal;
+  const x2 = width / 2 + Math.cos(angleRad) * halfDiagonal;
+  const y2 = height / 2 + Math.sin(angleRad) * halfDiagonal;
+  
+  gradient = ctx.createLinearGradient(x1, y1, x2, y2);
+  
+  if (settings.useThreeColors) {
+    gradient.addColorStop(0, settings.color1);
+    gradient.addColorStop(0.5, settings.color2);
+    gradient.addColorStop(1, settings.color3);
+  } else {
+    gradient.addColorStop(0, settings.color1);
+    gradient.addColorStop(1, settings.color2);
+  }
+}
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 

@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className="flex mt-10 sm:mt-4 md:mt-0 flex-col items-center justify-center pb-5 text-sm lg:pb-0 lg:pt-20 text-gray-200 lg:flex-row opacity-60">
       <a
-        href="https://twitter.com/thelifeofrishi"
+        href="https://www.linkedin.com/in/ashutosh-dureja-919072209/"
         target="_blank"
         className="flex items-center hover:underline"
       >
@@ -15,7 +15,7 @@ export default function Footer() {
       </a>
       <span className="hidden px-2 lg:block">-</span>
       <a
-        href="https://github.com/rishimohan/pika"
+        href="https://github.com/ashudureja?tab=overview&from=2025-06-01&to=2025-06-30"
         target="_blank"
         className="flex items-center mt-2 hover:underline lg:mt-0"
       >
@@ -26,7 +26,7 @@ export default function Footer() {
       </a>
       <span className="hidden px-2 lg:block">-</span>
       <a
-        href="https://www.buymeacoffee.com/thelifeofrishi"
+        href="https://www.instagram.com/ashudureja_/"
         target="_blank"
         className="flex items-center mt-2 hover:underline lg:mt-0"
       >
